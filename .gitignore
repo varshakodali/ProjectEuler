@@ -1,0 +1,11 @@
+*.xml
+*.iml
+out
+
+# Scala-IDE specific
+.scala_dependencies
+.classpath
+.project
+.settings
+.idea
+.idea_modules
