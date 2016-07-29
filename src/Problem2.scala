@@ -7,8 +7,13 @@
 */
 
 object Problem2 {
+
   def main(args: Array[String]) {
-    def fibonacci(x: Int, y: Int): Stream[Int] = x #:: fibonacci(y,x+y)
-    var solution = fibonacci(1,2).takeWhile( _  <= 4000000).toList.filter( _ % 2 == 0).sum
+
+    def fibonacci(x: Int, y: Int): Stream[Int] = x #:: fibonacci(y, x+y)
+    var solution = fibonacci(1,2).takeWhile( n => (n <= 4000000)).toList.filter( n =>(n % 2 == 0)).sum
   }
+
 }
+
+// Reference: Streams in scala - http://www.scala-lang.org/docu/files/collections-api/collections_14.html

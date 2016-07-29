@@ -6,9 +6,10 @@
 
 object Problem3 {
   def main(args: Array[String]) {
-    def factors(n: Long) = {
-      (2 to math.sqrt(n).toInt).filter(n % _ ==0)
+
+    def factors(n: Long): List[Long] = {
+      (2L to math.sqrt(n).toLong).filter(n % _ ==0).toList
     }
-    factors(600851475143L).filter(e => !(2 to (math.sqrt(e).toInt)).exists(x => e % x == 0)).max
+    val solution = factors(600851475143L).filter(e => factors(e).size <=0).max
   }
 }
