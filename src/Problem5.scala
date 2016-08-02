@@ -6,17 +6,21 @@
 
 object Problem5 {
   def main(args: Array[String]) {
-    def factors(n: Int) = {
-      (2 to n/2).filter(n % _ ==0)
+    def factors(x: Int): List[Int] = {
+      val prime = (2 to math.sqrt(x).toInt).find(x % _ == 0)
+      prime match {
+        case Some(n) => n :: x :: factors(x/n)
+        case None => List(x)
+      }
     }
     val primes: List[Int]   = (2 to 20).filter(n => !(2 to math.sqrt(n).toInt).exists(e => n % e ==0)).toList
     val composite: List[Int] = (2 to 20).filter(n => (2 to math.sqrt(n).toInt).exists(e => n % e ==0)).toList
-    val inter: List[Int] = composite.map(n => factors(n)).flatten
+    val inter = composite.map(n => factors(n)).distinct
     val inter2 = primes.flatMap(e1 => primes.map(e2 => e1 * e2))
     println(primes)
     println(composite)
     println(inter)
-    println(inter.filter(e => !primes.contains(e)))
+    //println(inter.filter(e => !primes.contains(e)))
     println(composite.flatMap(e1 => primes.map(e2 => {if(e1 % e2 ==0) e1/e2 else 0} )).filter(e => !primes.contains(e)).distinct)
   }
 }
