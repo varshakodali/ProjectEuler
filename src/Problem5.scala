@@ -15,7 +15,7 @@ object Problem5 {
     }
     val primes: List[Int]   = (2 to 20).filter(n => !(2 to math.sqrt(n).toInt).exists(e => n % e ==0)).toList
     val composite: List[Int] = (2 to 20).filter(n => (2 to math.sqrt(n).toInt).exists(e => n % e ==0)).toList
-    val inter = composite.map(n => factors(n)).distinct
+    val inter = composite.map(n => factors(n).distinct)
     val inter2 = primes.flatMap(e1 => primes.map(e2 => e1 * e2))
     println(primes)
     println(composite)
