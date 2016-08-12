@@ -14,6 +14,5 @@
 object Problem29 {
   def main(args: Array[String]) {
     val solution = (BigInt(2) to BigInt(100)).flatMap(a => (2 to 100).map(b => a.pow(b))).distinct.size
-    println(solution)
   }
 }
